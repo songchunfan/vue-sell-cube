@@ -7,28 +7,28 @@
         :options="scrollOptions"
         v-if="goods.length"
       >
-        <!--<template slot="bar" slot-scope="props">-->
-          <!--<cube-scroll-nav-bar-->
-            <!--direction="vertical"-->
-            <!--:labels="props.labels"-->
-            <!--:txts="barTxts"-->
-            <!--:current="props.current"-->
-          <!--&gt;-->
-            <!--<template slot-scope="props">-->
-              <!--<div class="text">-->
-                <!--<support-ico-->
-                  <!--v-if="props.txt.type>=1"-->
-                  <!--:size=3-->
-                  <!--:type="props.txt.type"-->
-                <!--&gt;</support-ico>-->
-                <!--<span>{{props.txt.name}}</span>-->
-                <!--<span class="num" v-if="props.txt.count">-->
-                  <!--<bubble :num="props.txt.count"></bubble>-->
-                <!--</span>-->
-              <!--</div>-->
-            <!--</template>-->
-          <!--</cube-scroll-nav-bar>-->
-        <!--</template>-->
+        <template slot="bar" slot-scope="props">
+          <cube-scroll-nav-bar
+            direction="vertical"
+            :labels="props.labels"
+            :txts="barTxts"
+            :current="props.current"
+          >
+            <template slot-scope="props">
+              <div class="text">
+                <support-ico
+                  v-if="props.txt.type>=1"
+                  :size=3
+                  :type="props.txt.type"
+                ></support-ico>
+                <span>{{props.txt.name}}</span>
+                <span class="num" v-if="props.txt.count">
+                  <bubble :num="props.txt.count"></bubble>
+                </span>
+              </div>
+            </template>
+          </cube-scroll-nav-bar>
+        </template>
         <cube-scroll-nav-panel
           v-for="good in goods"
           :key="good.name"
@@ -71,6 +71,7 @@
         :delivery-price="seller.deliveryPrice"
         :min-price="seller.minPrice"></shop-cart>
     </div>
+    <!--<food :food="selectedFood" ref="food"></food>-->
   </div>
 </template>
 
@@ -78,9 +79,8 @@
   import { getGoods } from 'api'
   import CartControl from 'components/cart-control/cart-control'
   import ShopCart from 'components/shop-cart/shop-cart'
-  // import Food from 'components/food/food'
-  // import SupportIco from 'components/support-ico/support-ico'
-  // import Bubble from 'components/bubble/bubble'
+  import SupportIco from 'components/support-ico/support-ico'
+  import Bubble from 'components/bubble/bubble'
 
   export default {
     name: 'goods',
@@ -185,11 +185,10 @@
       }
     },
     components: {
-      // Bubble,
-      // SupportIco,
+      Bubble,
+      SupportIco,
       CartControl,
       ShopCart
-      // Food
     }
   }
 </script>

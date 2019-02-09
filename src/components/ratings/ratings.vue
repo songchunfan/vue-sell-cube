@@ -1,6 +1,6 @@
 <template>
-  <cube-scroll ref="scroll" class="ratings" :options="scrollOptions">ratings
-    <!--<div class="ratings-content">
+  <cube-scroll ref="scroll" class="ratings" :options="scrollOptions">
+    <div class="ratings-content">
       <div class="overview">
         <div class="overview-left">
           <h1 class="score">{{seller.score}}</h1>
@@ -67,21 +67,21 @@
           </li>
         </ul>
       </div>
-    </div>-->
+    </div>
   </cube-scroll>
 </template>
 
 <script>
-  // import Star from 'components/star/star'
-  // import RatingSelect from 'components/rating-select/rating-select'
-  // import Split from 'components/split/split'
-  // import ratingMixin from 'common/mixins/rating'
-  // import { getRatings } from 'api'
-  // import moment from 'moment'
+  import Star from 'components/star/star'
+  import RatingSelect from 'components/rating-select/rating-select'
+  import Split from 'components/split/split'
+  import ratingMixin from 'common/mixins/rating'
+  import { getRatings } from 'api'
+  import moment from 'moment'
 
   export default {
     name: 'ratings',
-    // mixins: [ratingMixin],
+    mixins: [ratingMixin],
     props: {
       data: {
         type: Object
@@ -105,21 +105,21 @@
       fetch () {
         if (!this.fetched) {
           this.fetched = true
-          // getRatings({
-          //   id: this.seller.id
-          // }).then((ratings) => {
-          //   this.ratings = ratings
-          // })
+          getRatings({
+            id: this.seller.id
+          }).then((ratings) => {
+            this.ratings = ratings
+          })
         }
       },
       format (time) {
-        // return moment(time).format('YYYY-MM-DD hh:mm')
+        return moment(time).format('YYYY-MM-DD hh:mm')
       }
     },
     components: {
-      // Star,
-      // Split,
-      // RatingSelect
+      Star,
+      Split,
+      RatingSelect
     },
     watch: {
       selectType () {
