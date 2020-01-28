@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const urlMap = {
   development: '/',
-  production: 'http://101.200.56.205:81/sell/'
+  production: 'http://pennycy.com/sell'
 }
 const baseUrl = urlMap[process.env.NODE_ENV]
 const ERR_OK = 0
