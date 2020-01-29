@@ -8,6 +8,9 @@ const goods = appData.goods
 const ratings = appData.ratings
 
 const router = express.Router()
+app.all('*', function(req, res, next) {
+  res.setHeader('Access-Control-Allow-Origin', '*')
+})
 
 router.get('/seller', function (req, res) {
   res.json({
