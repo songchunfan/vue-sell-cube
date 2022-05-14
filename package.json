@@ -6,7 +6,8 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "report": "vue-cli-service build --report"
+    "report": "vue-cli-service build --report",
+    "deploy": "npm run build && nohup node prod.server.js &"
   },
   "dependencies": {
     "axios": "0.18.0",
